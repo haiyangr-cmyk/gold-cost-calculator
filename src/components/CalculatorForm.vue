@@ -67,7 +67,7 @@ function preventInvalidKey(event: KeyboardEvent) {
 <template>
   <section class="panel-card">
     <div class="mb-5">
-      <p class="eyebrow">MVP 01</p>
+      <p class="eyebrow">成本测算</p>
       <h2 class="section-title">黄金成本计算器</h2>
       <p class="section-desc">本地实时计算，不调用任何第三方金价接口。</p>
     </div>

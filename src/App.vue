@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import AdSlot from './components/AdSlot.vue';
-import AdUnlockModal from './components/AdUnlockModal.vue';
 import CalculatorForm from './components/CalculatorForm.vue';
 import GoodsAdCards from './components/GoodsAdCards.vue';
 import ProfitEstimator from './components/ProfitEstimator.vue';
@@ -28,8 +26,6 @@ const form = ref<GoldFormValues>({
 });
 
 const records = ref<GoldRecord[]>([]);
-const adModalOpen = ref(false);
-const comparisonUnlocked = ref(false);
 const saveNotice = ref('');
 
 onMounted(() => {
@@ -76,31 +72,18 @@ function saveCurrentRecord() {
     net_profit: profitResult.value.netProfit
   });
 }
-
-function openSponsorContent() {
-  adModalOpen.value = true;
-  trackEvent('open_sponsor_content');
-}
-
-function unlockReference() {
-  comparisonUnlocked.value = true;
-  trackEvent('unlock_reference');
-}
-
 </script>
 
 <template>
-  <main class="min-h-screen bg-luxury-black pb-28 text-white">
+  <main class="min-h-screen bg-luxury-black pb-16 text-white">
     <div class="pointer-events-none fixed inset-0 overflow-hidden">
       <div class="absolute -left-24 top-10 h-72 w-72 rounded-full bg-luxury-gold/15 blur-3xl"></div>
       <div class="absolute right-0 top-48 h-96 w-96 rounded-full bg-luxury-gold2/10 blur-3xl"></div>
     </div>
 
     <div class="relative mx-auto w-full max-w-6xl px-4 py-4 sm:px-6 lg:px-8">
-      <AdSlot slot-id="ad-top" variant="top" />
-
       <header class="py-8 sm:py-12">
-        <p class="eyebrow">Vibe Coding MVP</p>
+        <p class="eyebrow">生活成本实验室｜黄金篇</p>
         <div class="mt-3 grid gap-5 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl">
@@ -142,18 +125,13 @@ function unlockReference() {
           <GoodsAdCards />
 
           <section class="panel-card">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <p class="eyebrow">广告解锁</p>
-                <h2 class="section-title">简易金价对比参考</h2>
-                <p class="section-desc">仅比较你输入的买入金价与预期卖出金价，不接入外部行情。</p>
-              </div>
-              <button v-if="!comparisonUnlocked" class="gold-button shrink-0" @click="openSponsorContent">
-                查看赞助内容
-              </button>
+            <div>
+              <p class="eyebrow">成本参考</p>
+              <h2 class="section-title">买入价与预期卖出价对比</h2>
+              <p class="section-desc">仅比较你输入的基础金价与预期卖出金价，不接入外部实时行情。</p>
             </div>
 
-            <div v-if="comparisonUnlocked" class="mt-4 rounded-3xl border border-luxury-line bg-black/25 p-5">
+            <div class="mt-4 rounded-3xl border border-luxury-line bg-black/25 p-5">
               <p class="text-sm text-white/[0.55]">预期卖出金价 - 当前基础金价</p>
               <p
                 class="mt-2 text-3xl font-semibold"
@@ -162,12 +140,8 @@ function unlockReference() {
                 {{ sellPriceDiff >= 0 ? '+' : '-' }}¥{{ formatMoney(Math.abs(sellPriceDiff)) }}/克
               </p>
               <p class="mt-2 text-xs text-white/[0.42]">
-                这是广告解锁后的简易参考，不代表实时金价、回收价或投资建议。
+                这是基于手动输入数据的简易参考，不代表实时金价、回收价或投资建议。
               </p>
-            </div>
-
-            <div v-else class="mt-4 rounded-3xl border border-dashed border-luxury-line bg-white/[0.03] p-5 text-sm text-white/[0.48]">
-              参考内容暂未展开，点击按钮查看赞助内容占位。
             </div>
           </section>
         </div>
@@ -185,15 +159,5 @@ function unlockReference() {
 
       <SiteLinks />
     </div>
-
-    <footer class="fixed inset-x-0 bottom-0 z-40">
-      <AdSlot slot-id="ad-footer" variant="footer" />
-    </footer>
-
-    <AdUnlockModal
-      :open="adModalOpen"
-      @close="adModalOpen = false"
-      @unlocked="unlockReference"
-    />
   </main>
 </template>

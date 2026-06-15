@@ -30,7 +30,7 @@ function preventInvalidKey(event: KeyboardEvent) {
 <template>
   <section class="panel-card">
     <div class="mb-5">
-      <p class="eyebrow">MVP 02</p>
+      <p class="eyebrow">盈亏参考</p>
       <h2 class="section-title">简易盈亏测算</h2>
       <p class="section-desc">只基于你输入的卖出金价估算，不代表实时回收报价。</p>
     </div>

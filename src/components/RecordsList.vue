@@ -19,7 +19,7 @@ function formatDate(value: string): string {
 <template>
   <section class="panel-card">
     <div class="mb-5">
-      <p class="eyebrow">MVP 03</p>
+      <p class="eyebrow">本地记录</p>
       <h2 class="section-title">本地测算记录</h2>
       <p class="section-desc">仅保存在当前浏览器 localStorage，最多保留 10 条。</p>
     </div>
