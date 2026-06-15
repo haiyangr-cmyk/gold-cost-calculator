@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #101010;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #101010;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+@layer components {
+  .panel-card {
+    @apply rounded-[1.75rem] border border-luxury-line bg-luxury-panel/[0.88] p-5 shadow-gold backdrop-blur sm:p-6;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-luxury-gold;
+  }
+
+  .section-title {
+    @apply mt-1 text-2xl font-semibold tracking-tight text-white;
+  }
+
+  .section-desc {
+    @apply mt-2 text-sm leading-6 text-white/50;
+  }
+
+  .gold-text {
+    @apply bg-gradient-to-r from-luxury-gold via-luxury-gold2 to-white bg-clip-text text-transparent;
+  }
+
+  .form-label {
+    @apply mb-2 block text-sm font-medium text-white/[0.78];
+  }
+
+  .input-wrap {
+    @apply flex items-center rounded-2xl border border-white/10 bg-black/[0.28] px-4 transition focus-within:border-luxury-gold/80 focus-within:ring-4 focus-within:ring-luxury-gold/10;
+  }
+
+  .form-input {
+    @apply min-h-12 w-full border-0 bg-transparent py-3 text-base text-white outline-none placeholder:text-white/[0.24];
+  }
+
+  .input-suffix {
+    @apply shrink-0 pl-3 text-sm text-luxury-gold2/80;
+  }
+
+  .form-hint {
+    @apply mt-2 text-xs text-white/[0.38];
+  }
+
+  .form-error {
+    @apply mt-2 text-xs text-red-200;
+  }
+
+  .metric-card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.035] p-4;
+  }
+
+  .metric-card span {
+    @apply block text-xs text-white/[0.48];
+  }
+
+  .metric-card strong {
+    @apply mt-2 block text-xl font-semibold text-white;
+  }
+
+  .gold-button {
+    @apply inline-flex items-center rounded-full bg-gradient-to-r from-luxury-gold to-luxury-gold2 px-4 py-2.5 text-sm font-semibold text-black shadow-gold transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .goods-card {
+    @apply rounded-3xl border border-white/10 bg-black/20 p-4 transition hover:border-luxury-gold/60 hover:bg-luxury-gold/10;
+  }
+
+  .goods-card strong {
+    @apply mt-3 block text-sm text-white;
+  }
+
+  .goods-card small {
+    @apply mt-1 block text-xs text-white/[0.42];
+  }
+
+  .goods-icon {
+    @apply flex h-12 w-12 items-center justify-center rounded-2xl border border-luxury-line bg-luxury-gold/10 text-lg font-semibold text-luxury-gold2;
+  }
+
+  .empty-box {
+    @apply rounded-3xl border border-dashed border-luxury-line bg-white/[0.03] p-5 text-sm text-white/[0.45];
+  }
+
+  .record-item {
+    @apply flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-black/20 p-4;
+  }
+
+  .share-preview {
+    @apply rounded-[1.75rem] border border-luxury-line bg-gradient-to-br from-black via-luxury-panel to-luxury-gold/30 p-5;
+  }
+
+  .share-row {
+    @apply flex items-center justify-between gap-3 rounded-2xl bg-black/[0.24] px-4 py-3;
+  }
+
+  .share-row span {
+    @apply text-sm text-white/[0.55];
+  }
+
+  .share-row strong {
+    @apply text-right text-base font-semibold text-white;
+  }
+
+  .ad-shell {
+    @apply text-white;
+  }
+}
