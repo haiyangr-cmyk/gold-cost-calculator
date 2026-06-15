@@ -17,6 +17,7 @@ import {
 } from './utils/calcGold';
 import { getGoldRecords, saveGoldRecord } from './utils/storage';
 import type { GoldFormValues, GoldRecord } from './types/gold';
+import { trackEvent } from './utils/analytics';
 
 const form = ref<GoldFormValues>({
   goldPrice: '580',
@@ -66,7 +67,26 @@ function saveCurrentRecord() {
 
   records.value = saveGoldRecord(record);
   saveNotice.value = '已保存到本地测算记录，最多保留最近 10 条。';
+
+  trackEvent('save_record', {
+    gold_price: validation.value.numeric.goldPrice,
+    weight: validation.value.numeric.weight,
+    total_cost: costResult.value.totalCost,
+    average_cost_per_gram: costResult.value.averageCostPerGram,
+    net_profit: profitResult.value.netProfit
+  });
 }
+
+function openSponsorContent() {
+  adModalOpen.value = true;
+  trackEvent('open_sponsor_content');
+}
+
+function unlockReference() {
+  comparisonUnlocked.value = true;
+  trackEvent('unlock_reference');
+}
+
 </script>
 
 <template>
@@ -128,7 +148,7 @@ function saveCurrentRecord() {
                 <h2 class="section-title">简易金价对比参考</h2>
                 <p class="section-desc">仅比较你输入的买入金价与预期卖出金价，不接入外部行情。</p>
               </div>
-              <button v-if="!comparisonUnlocked" class="gold-button shrink-0" @click="adModalOpen = true">
+              <button v-if="!comparisonUnlocked" class="gold-button shrink-0" @click="openSponsorContent">
                 查看赞助内容
               </button>
             </div>
@@ -173,7 +193,7 @@ function saveCurrentRecord() {
     <AdUnlockModal
       :open="adModalOpen"
       @close="adModalOpen = false"
-      @unlocked="comparisonUnlocked = true"
+      @unlocked="unlockReference"
     />
   </main>
 </template>

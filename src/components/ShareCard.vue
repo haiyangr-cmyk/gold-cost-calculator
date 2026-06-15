@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { trackEvent } from '../utils/analytics';
 import type { CostResult, NumericGoldInput, ProfitResult } from '../types/gold';
 import { formatMoney } from '../utils/calcGold';
 
@@ -117,6 +118,13 @@ function drawShareImage() {
   link.href = url;
   link.download = `黄金成本测算-${Date.now()}.png`;
   link.click();
+
+  trackEvent('generate_share_card', {
+    total_cost: props.costResult.totalCost,
+    average_cost_per_gram: props.costResult.averageCostPerGram,
+    net_profit: props.profitResult.netProfit
+  });
+
   statusText.value = 'PNG 分享卡片已生成；移动端也可以长按卡片或系统截图。';
 }
 </script>
