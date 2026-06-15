@@ -8,6 +8,7 @@ import ProfitEstimator from './components/ProfitEstimator.vue';
 import RecordsList from './components/RecordsList.vue';
 import ResultPanel from './components/ResultPanel.vue';
 import ShareCard from './components/ShareCard.vue';
+import SiteLinks from './components/SiteLinks.vue';
 import {
   calculateGoldCost,
   calculateProfit,
@@ -161,6 +162,8 @@ function saveCurrentRecord() {
           :is-valid="validation.isProfitValid"
         />
       </div>
+
+      <SiteLinks />
     </div>
 
     <footer class="fixed inset-x-0 bottom-0 z-40">
