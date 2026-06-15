@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gold-cost-calculator.vercel.app/sitemap.xml
+Sitemap: https://www.livingcostlaboratory.com/sitemap.xml
