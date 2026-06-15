@@ -128,7 +128,7 @@ function saveCurrentRecord() {
                 <p class="section-desc">仅比较你输入的买入金价与预期卖出金价，不接入外部行情。</p>
               </div>
               <button v-if="!comparisonUnlocked" class="gold-button shrink-0" @click="adModalOpen = true">
-                观看广告解锁
+                查看赞助内容
               </button>
             </div>
 
@@ -146,7 +146,7 @@ function saveCurrentRecord() {
             </div>
 
             <div v-else class="mt-4 rounded-3xl border border-dashed border-luxury-line bg-white/[0.03] p-5 text-sm text-white/[0.48]">
-              参考内容已锁定，点击按钮弹出 ad-modal 广告占位。
+              参考内容暂未展开，点击按钮查看赞助内容占位。
             </div>
           </section>
         </div>
