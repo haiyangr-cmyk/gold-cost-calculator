@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { trackEvent } from '../utils/analytics';
+
+function trackGoodsClick(itemName: string) {
+  trackEvent('click_goods_card', {
+    item_name: itemName
+  });
+}
+</script>
+
 <template>
   <section id="ad-goods" class="panel-card" data-ad-slot="ad-goods">
     <div class="mb-4">
@@ -11,27 +21,29 @@
         href="#"
         class="goods-card"
         aria-label="投资金条商品占位"
-        @click.prevent
+        @click.prevent="trackGoodsClick('investment_gold_bar')"
       >
         <span class="goods-icon">Au</span>
         <strong>投资金条占位</strong>
         <small>分销链接待接入</small>
       </a>
+
       <a
         href="#"
         class="goods-card"
         aria-label="婚嫁三金商品占位"
-        @click.prevent
+        @click.prevent="trackGoodsClick('wedding_gold')"
       >
         <span class="goods-icon">囍</span>
         <strong>婚嫁三金占位</strong>
         <small>分销链接待接入</small>
       </a>
+
       <a
         href="#"
         class="goods-card"
         aria-label="黄金收纳清洁商品占位"
-        @click.prevent
+        @click.prevent="trackGoodsClick('gold_cleaning_storage')"
       >
         <span class="goods-icon">✨</span>
         <strong>清洁收纳占位</strong>
